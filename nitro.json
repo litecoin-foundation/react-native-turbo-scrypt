@@ -1,0 +1,12 @@
+{
+  "cxxNamespace": ["TurboScrypt"],
+  "ios": {
+    "iosModuleName": "react-native-turbo-scrypt"
+  },
+  "android": {
+    "androidNamespace": ["TurboScrypt"],
+    "androidCxxLibName": "TurboScryptCxxLib"
+  },
+  "autolinking": {},
+  "ignorePaths": ["node_modules"]
+}
