@@ -11,7 +11,9 @@
 #include <fbjni/fbjni.h>
 #include <NitroModules/HybridObjectRegistry.hpp>
 
-
+#include "JHybridPoopySpec.hpp"
+#include <NitroModules/JNISharedPtr.hpp>
+#include <NitroModules/DefaultConstructableObject.hpp>
 
 namespace margelo::nitro::TurboScrypt {
 
@@ -22,10 +24,18 @@ int initialize(JavaVM* vm) {
 
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
-    
+    margelo::nitro::TurboScrypt::JHybridPoopySpec::registerNatives();
 
     // Register Nitro Hybrid Objects
-    
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "Poopy",
+      []() -> std::shared_ptr<HybridObject> {
+        static DefaultConstructableObject<JHybridPoopySpec::javaobject> object("com/margelo/nitro/TurboScryptAndroid/HybridPoopy");
+        auto instance = object.create();
+        auto globalRef = jni::make_global(instance);
+        return JNISharedPtr::make_shared_from_jni<JHybridPoopySpec>(globalRef);
+      }
+    );
   });
 }
 

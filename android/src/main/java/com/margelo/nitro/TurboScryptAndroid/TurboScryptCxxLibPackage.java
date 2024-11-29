@@ -1,4 +1,4 @@
-package com.margelo.nitro.TurboScrypt;
+package com.margelo.nitro.TurboScryptAndroid;
 
 import android.util.Log;
 

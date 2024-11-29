@@ -4,12 +4,15 @@
     "iosModuleName": "TurboScryptiOS"
   },
   "android": {
-    "androidNamespace": ["TurboScrypt"],
+    "androidNamespace": ["TurboScryptAndroid"],
     "androidCxxLibName": "TurboScryptCxxLib"
   },
   "autolinking": {
     "Scrypt": {
       "swift": "HybridScrypt"
+    },
+    "Poopy": {
+      "kotlin": "HybridPoopy"
     }
   },
   "ignorePaths": ["node_modules"]
