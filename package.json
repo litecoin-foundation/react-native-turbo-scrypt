@@ -1,7 +1,7 @@
 {
-  "name": "react-native-nitro-template",
+  "name": "react-native-turbo-scrypt",
   "version": "0.0.1",
-  "description": "A template for Nitro Modules.",
+  "description": "⚡ fast Scrypt implementation for React Native via Nitromodules",
   "main": "lib/index",
   "module": "lib/index",
   "types": "lib/index.d.ts",
@@ -40,14 +40,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrousavy/nitro.git"
+    "url": "https://github.com/litecoin-foundation/react-native-turbo-scrypt.git"
   },
-  "author": "Marc Rousavy <me@mrousavy.com> (https://github.com/mrousavy)",
+  "author": "Loshan <loshan1212@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mrousavy/nitro/issues"
+    "url": "https://github.com/litecoin-foundation/react-native-turbo-scrypt/issues"
   },
-  "homepage": "https://github.com/mrousavy/nitro#readme",
+  "homepage": "https://github.com/litecoin-foundation/react-native-turbo-scrypt#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -103,5 +103,9 @@
     "trailingComma": "es5",
     "useTabs": false,
     "semi": false
-  }
+  },
+  "trustedDependencies": [
+    "nitro-codegen",
+    "react-native-nitro-modules"
+  ]
 }

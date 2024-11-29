@@ -3,7 +3,7 @@ require "json"
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
 Pod::Spec.new do |s|
-  s.name         = "react-native-turbo-scrypt"
+  s.name         = "TurboScryptiOS"
   s.version      = package["version"]
   s.summary      = package["description"]
   s.homepage     = package["homepage"]
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
     "cpp/**/*.{hpp,cpp}",
   ]
 
-  load 'nitrogen/generated/ios/react-native-turbo-scrypt+autolinking.rb'
+  load 'nitrogen/generated/ios/TurboScryptiOS+autolinking.rb'
   add_nitrogen_files(s)
 
   install_modules_dependencies(s)

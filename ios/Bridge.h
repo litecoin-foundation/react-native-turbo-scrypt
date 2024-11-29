@@ -1,6 +1,6 @@
 //
 //  Bridge.h
-//  react-native-turbo-scrypt
+//  TurboScryptiOS
 //
 //  Created by Marc Rousavy on 22.07.24.
 //
