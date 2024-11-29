@@ -9,7 +9,7 @@
 
 
 
-
+#include <string>
 
 namespace margelo::nitro::TurboScrypt {
 
@@ -29,17 +29,13 @@ namespace margelo::nitro::TurboScrypt {
   }
 
   // Properties
-  double JHybridPoopySpec::getPi() {
-    static const auto method = _javaPart->getClass()->getMethod<double()>("getPi");
-    auto __result = method(_javaPart);
-    return __result;
-  }
+  
 
   // Methods
-  double JHybridPoopySpec::add(double a, double b) {
-    static const auto method = _javaPart->getClass()->getMethod<double(double /* a */, double /* b */)>("add");
-    auto __result = method(_javaPart, a, b);
-    return __result;
+  std::string JHybridPoopySpec::scrypt(const std::string& password, const std::string& salt, double N, double r, double p, double size) {
+    static const auto method = _javaPart->getClass()->getMethod<jni::local_ref<jni::JString>(jni::alias_ref<jni::JString> /* password */, jni::alias_ref<jni::JString> /* salt */, double /* N */, double /* r */, double /* p */, double /* size */)>("scrypt");
+    auto __result = method(_javaPart, jni::make_jstring(password), jni::make_jstring(salt), N, r, p, size);
+    return __result->toStdString();
   }
 
 } // namespace margelo::nitro::TurboScrypt

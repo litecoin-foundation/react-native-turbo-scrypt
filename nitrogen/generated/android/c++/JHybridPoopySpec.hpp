@@ -47,11 +47,11 @@ namespace margelo::nitro::TurboScrypt {
 
   public:
     // Properties
-    double getPi() override;
+    
 
   public:
     // Methods
-    double add(double a, double b) override;
+    std::string scrypt(const std::string& password, const std::string& salt, double N, double r, double p, double size) override;
 
   private:
     friend HybridBase;

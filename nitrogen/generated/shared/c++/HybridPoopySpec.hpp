@@ -15,7 +15,7 @@
 
 
 
-
+#include <string>
 
 namespace margelo::nitro::TurboScrypt {
 
@@ -44,11 +44,11 @@ namespace margelo::nitro::TurboScrypt {
 
     public:
       // Properties
-      virtual double getPi() = 0;
+      
 
     public:
       // Methods
-      virtual double add(double a, double b) = 0;
+      virtual std::string scrypt(const std::string& password, const std::string& salt, double N, double r, double p, double size) = 0;
 
     protected:
       // Hybrid Setup

@@ -134,6 +134,8 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
 
+  implementation 'org.bouncycastle:bcprov-jdk18on:1.79'
+
   // Add a dependency on NitroModules
   implementation project(":react-native-nitro-modules")
 }
