@@ -14,8 +14,7 @@ namespace margelo::nitro::TurboScrypt {
     HybridObject::loadHybridMethods();
     // load custom methods/properties
     registerHybrids(this, [](Prototype& prototype) {
-      prototype.registerHybridGetter("pi", &HybridPoopySpec::getPi);
-      prototype.registerHybridMethod("add", &HybridPoopySpec::add);
+      prototype.registerHybridMethod("scrypt", &HybridPoopySpec::scrypt);
     });
   }
 

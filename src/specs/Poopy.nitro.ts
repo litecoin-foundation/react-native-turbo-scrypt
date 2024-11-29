@@ -1,6 +1,12 @@
 import type { HybridObject } from 'react-native-nitro-modules'
 
 export interface Poopy extends HybridObject<{ android: 'kotlin' }> {
-  readonly pi: number
-  add(a: number, b: number): number
+  scrypt(
+    password: string,
+    salt: string,
+    N: number,
+    r: number,
+    p: number,
+    size: number
+  ): string
 }

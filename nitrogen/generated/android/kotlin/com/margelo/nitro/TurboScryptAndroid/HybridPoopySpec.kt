@@ -38,14 +38,12 @@ abstract class HybridPoopySpec: HybridObject() {
   }
 
   // Properties
-  @get:DoNotStrip
-  @get:Keep
-  abstract val pi: Double
+  
 
   // Methods
   @DoNotStrip
   @Keep
-  abstract fun add(a: Double, b: Double): Double
+  abstract fun scrypt(password: String, salt: String, N: Double, r: Double, p: Double, size: Double): String
 
   private external fun initHybrid(): HybridData
 

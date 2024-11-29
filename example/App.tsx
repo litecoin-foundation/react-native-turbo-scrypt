@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
-import {Scrypt, HybridPoopy as TurboMath} from 'react-native-turbo-scrypt';
+import {Scrypt, HybridPoopy} from 'react-native-turbo-scrypt';
 
 const SCRYPT_N = 32768;
 const SCRYPT_R = 8;
@@ -28,7 +28,14 @@ function App(): React.JSX.Element {
   const [scryptHex, updateHex] = useState('');
   const [timeTaken, updateTimeTaken] = useState(0);
 
-  const test = TurboMath.add(20, 1);
+  const test = HybridPoopy.scrypt(
+    'hello',
+    'poopy',
+    SCRYPT_N,
+    SCRYPT_R,
+    SCRYPT_P,
+    SCRYPT_KEY_LENGTH,
+  );
 
   return (
     <SafeAreaView style={styles.container}>
