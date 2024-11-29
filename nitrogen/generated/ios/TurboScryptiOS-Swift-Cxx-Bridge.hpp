@@ -8,15 +8,15 @@
 #pragma once
 
 // Forward declarations of C++ defined types
-// Forward declaration of `HybridMathSpec` to properly resolve imports.
-namespace margelo::nitro::TurboScrypt { class HybridMathSpec; }
+// Forward declaration of `HybridScryptSpec` to properly resolve imports.
+namespace margelo::nitro::TurboScrypt { class HybridScryptSpec; }
 
 // Forward declarations of Swift defined types
-// Forward declaration of `HybridMathSpecCxx` to properly resolve imports.
-namespace TurboScryptiOS { class HybridMathSpecCxx; }
+// Forward declaration of `HybridScryptSpecCxx` to properly resolve imports.
+namespace TurboScryptiOS { class HybridScryptSpecCxx; }
 
 // Include C++ defined types
-#include "HybridMathSpec.hpp"
+#include "HybridScryptSpec.hpp"
 #include <memory>
 
 /**
@@ -25,12 +25,12 @@ namespace TurboScryptiOS { class HybridMathSpecCxx; }
  */
 namespace margelo::nitro::TurboScrypt::bridge::swift {
 
-  // pragma MARK: std::shared_ptr<margelo::nitro::TurboScrypt::HybridMathSpec>
+  // pragma MARK: std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec>
   /**
-   * Specialized version of `std::shared_ptr<margelo::nitro::TurboScrypt::HybridMathSpec>`.
+   * Specialized version of `std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec>`.
    */
-  using std__shared_ptr_margelo__nitro__TurboScrypt__HybridMathSpec_ = std::shared_ptr<margelo::nitro::TurboScrypt::HybridMathSpec>;
-  std::shared_ptr<margelo::nitro::TurboScrypt::HybridMathSpec> create_std__shared_ptr_margelo__nitro__TurboScrypt__HybridMathSpec_(void* _Nonnull swiftUnsafePointer);
-  void* _Nonnull get_std__shared_ptr_margelo__nitro__TurboScrypt__HybridMathSpec_(std__shared_ptr_margelo__nitro__TurboScrypt__HybridMathSpec_ cppType);
+  using std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_ = std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec>;
+  std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec> create_std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_(void* _Nonnull swiftUnsafePointer);
+  void* _Nonnull get_std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_(std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_ cppType);
 
 } // namespace margelo::nitro::TurboScrypt::bridge::swift

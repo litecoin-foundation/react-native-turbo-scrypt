@@ -10,7 +10,7 @@
 #import "TurboScryptiOS-Swift-Cxx-Umbrella.hpp"
 #import <type_traits>
 
-#include "HybridMathSpecSwift.hpp"
+#include "HybridScryptSpecSwift.hpp"
 
 @interface TurboScryptiOSAutolinking : NSObject
 @end
@@ -22,9 +22,9 @@
   using namespace margelo::nitro::TurboScrypt;
 
   HybridObjectRegistry::registerHybridObjectConstructor(
-    "Math",
+    "Scrypt",
     []() -> std::shared_ptr<HybridObject> {
-      std::shared_ptr<margelo::nitro::TurboScrypt::HybridMathSpec> hybridObject = TurboScryptiOS::TurboScryptiOSAutolinking::createMath();
+      std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec> hybridObject = TurboScryptiOS::TurboScryptiOSAutolinking::createScrypt();
       return hybridObject;
     }
   );

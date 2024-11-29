@@ -8,12 +8,13 @@
 #pragma once
 
 // Forward declarations of C++ defined types
-// Forward declaration of `HybridMathSpec` to properly resolve imports.
-namespace margelo::nitro::TurboScrypt { class HybridMathSpec; }
+// Forward declaration of `HybridScryptSpec` to properly resolve imports.
+namespace margelo::nitro::TurboScrypt { class HybridScryptSpec; }
 
 // Include C++ defined types
-#include "HybridMathSpec.hpp"
+#include "HybridScryptSpec.hpp"
 #include <memory>
+#include <string>
 
 // C++ helpers for Swift
 #include "TurboScryptiOS-Swift-Cxx-Bridge.hpp"
@@ -25,8 +26,8 @@ namespace margelo::nitro::TurboScrypt { class HybridMathSpec; }
 #include <NitroModules/RuntimeError.hpp>
 
 // Forward declarations of Swift defined types
-// Forward declaration of `HybridMathSpecCxx` to properly resolve imports.
-namespace TurboScryptiOS { class HybridMathSpecCxx; }
+// Forward declaration of `HybridScryptSpecCxx` to properly resolve imports.
+namespace TurboScryptiOS { class HybridScryptSpecCxx; }
 
 // Include Swift defined types
 #if __has_include("TurboScryptiOS-Swift.h")

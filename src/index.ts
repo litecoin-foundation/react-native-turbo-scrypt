@@ -1,4 +1,4 @@
 import { NitroModules } from 'react-native-nitro-modules'
-import type { Math as MathInterface } from './specs/Math.nitro'
+import type { Scrypt as ScryptInterface } from './specs/CryptoSwift.nitro'
 
-export const Math = NitroModules.createHybridObject<MathInterface>('Math')
+export const Scrypt = NitroModules.createHybridObject<ScryptInterface>('Scrypt')

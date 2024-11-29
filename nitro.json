@@ -8,8 +8,8 @@
     "androidCxxLibName": "TurboScryptCxxLib"
   },
   "autolinking": {
-    "Math": {
-      "swift": "HybridMath"
+    "Scrypt": {
+      "swift": "HybridScrypt"
     }
   },
   "ignorePaths": ["node_modules"]

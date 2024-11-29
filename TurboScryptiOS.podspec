@@ -22,6 +22,8 @@ Pod::Spec.new do |s|
     "cpp/**/*.{hpp,cpp}",
   ]
 
+  s.dependency 'CryptoSwift'
+
   load 'nitrogen/generated/ios/TurboScryptiOS+autolinking.rb'
   add_nitrogen_files(s)
 

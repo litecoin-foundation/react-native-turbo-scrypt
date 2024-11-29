@@ -105,6 +105,7 @@
     "semi": false
   },
   "trustedDependencies": [
+    "esbuild",
     "nitro-codegen",
     "react-native-nitro-modules"
   ]
