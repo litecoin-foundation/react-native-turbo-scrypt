@@ -9,20 +9,21 @@ This library does not reimplement Scrypt, but instead simply binds Scrypt from [
 ```tsx
 import {Scrypt} from 'react-native-turbo-scrypt';
 
-const hexString = Scrypt.scrypt(
-      'password',                // password: string
-      'salt',                    // salt: string
+const passwordString = 'password';
+const passwordBuffer = new TextEncoder().encode(passwordString).buffer;
+const saltString = 'salt';
+const saltBuffer = new TextEncoder().encode(saltString).buffer;
+
+const hex = Scrypt.scrypt(
+       passwordBuffer,           // password: buffer
+       saltBuffer,               // salt: buffer
        32768,                    // N: number
        8,                        // r: number
        1,                        // p: number
        32,                       // key length: number
 );
 ```
-The result is a hex encoded string. To decode result to a UInt8Array:
-``` tsx
-const buffer = Buffer.from(hexString, 'hex');
-const uint8Array = new Uint8Array (buffer);
-```
+The result is a buffer.
 
 ## Installation
 ```bash
