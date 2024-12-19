@@ -23,21 +23,28 @@ class HybridPoopy : HybridPoopySpec() {
         val passwordBuffer = password.getBuffer(true).array()
         val saltBuffer = salt.getBuffer(true).array()
 
+        // TODO
+        // for some unknown reason, in the kotlin side, the byte[] for salt & password
+        // have 4 additional 0 bytes at the front, and 3 additional 0 bytes at the end.
+        // so we trim these bytes out!
+        val passwordBufferArray = passwordBuffer.copyOfRange(4, passwordBuffer.size - 3)
+        val saltBufferArray = saltBuffer.copyOfRange(4, saltBuffer.size - 3)
+
         // ByteArray
         val derivedKey =
                 SCrypt.generate(
-                        passwordBuffer,
-                        saltBuffer,
+                        passwordBufferArray,
+                        saltBufferArray,
                         N.toInt(),
                         r.toInt(),
                         p.toInt(),
                         size.toInt()
                 )
+
         // ByteArray to ByteBuffer
-        val keyBuffer = ByteBuffer.wrap(derivedKey)
-        while (keyBuffer.hasRemaining()) {
-            println(keyBuffer.get())
-        }
+        val keyBuffer = ByteBuffer.allocateDirect(derivedKey.size)
+        keyBuffer.put(derivedKey)
+        keyBuffer.rewind()
 
         // ByteBuffer -> ArrayBuffer
         return ArrayBuffer(keyBuffer)
