@@ -29,8 +29,10 @@ target_sources(
   # Shared Nitrogen C++ sources
   ../nitrogen/generated/shared/c++/HybridPoopySpec.cpp
   ../nitrogen/generated/shared/c++/HybridScryptSpec.cpp
+  ../nitrogen/generated/shared/c++/HybridPoopySpec.cpp
   ../nitrogen/generated/shared/c++/HybridScryptSpec.cpp
   # Android-specific Nitrogen C++ sources
+  ../nitrogen/generated/android/c++/JHybridPoopySpec.cpp
   ../nitrogen/generated/android/c++/JHybridPoopySpec.cpp
 )
 

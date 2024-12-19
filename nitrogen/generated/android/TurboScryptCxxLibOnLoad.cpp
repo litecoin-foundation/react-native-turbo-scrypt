@@ -25,6 +25,7 @@ int initialize(JavaVM* vm) {
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
     margelo::nitro::TurboScrypt::JHybridPoopySpec::registerNatives();
+    margelo::nitro::TurboScrypt::JHybridPoopySpec::registerNatives();
 
     // Register Nitro Hybrid Objects
     HybridObjectRegistry::registerHybridObjectConstructor(
