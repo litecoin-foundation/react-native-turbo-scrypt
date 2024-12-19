@@ -27,8 +27,9 @@ target_sources(
   # Autolinking Setup
   ../nitrogen/generated/android/TurboScryptCxxLibOnLoad.cpp
   # Shared Nitrogen C++ sources
-  ../nitrogen/generated/shared/c++/HybridScryptSpec.cpp
   ../nitrogen/generated/shared/c++/HybridPoopySpec.cpp
+  ../nitrogen/generated/shared/c++/HybridScryptSpec.cpp
+  ../nitrogen/generated/shared/c++/HybridScryptSpec.cpp
   # Android-specific Nitrogen C++ sources
   ../nitrogen/generated/android/c++/JHybridPoopySpec.cpp
 )

@@ -43,7 +43,7 @@ abstract class HybridPoopySpec: HybridObject() {
   // Methods
   @DoNotStrip
   @Keep
-  abstract fun scrypt(password: String, salt: String, N: Double, r: Double, p: Double, size: Double): String
+  abstract fun scrypt(password: ArrayBuffer, salt: ArrayBuffer, N: Double, r: Double, p: Double, size: Double): ArrayBuffer
 
   private external fun initHybrid(): HybridData
 

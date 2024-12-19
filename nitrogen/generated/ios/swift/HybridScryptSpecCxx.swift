@@ -99,10 +99,10 @@ public class HybridScryptSpecCxx {
 
   // Methods
   @inline(__always)
-  public func scrypt(password: std.string, salt: std.string, N: Double, r: Double, p: Double, size: Double) -> std.string {
+  public func scrypt(password: ArrayBufferHolder, salt: ArrayBufferHolder, N: Double, r: Double, p: Double, size: Double) -> ArrayBufferHolder {
     do {
-      let __result = try self.__implementation.scrypt(password: String(password), salt: String(salt), N: N, r: r, p: p, size: size)
-      return std.string(__result)
+      let __result = try self.__implementation.scrypt(password: password, salt: salt, N: N, r: r, p: p, size: size)
+      return __result
     } catch {
       let __message = "\(error.localizedDescription)"
       fatalError("Swift errors can currently not be propagated to C++! See https://github.com/swiftlang/swift/issues/75290 (Error: \(__message))")

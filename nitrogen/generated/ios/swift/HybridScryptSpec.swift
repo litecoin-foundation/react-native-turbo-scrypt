@@ -32,5 +32,5 @@ public protocol HybridScryptSpec: AnyObject, HybridObjectSpec {
   
 
   // Methods
-  func scrypt(password: String, salt: String, N: Double, r: Double, p: Double, size: Double) throws -> String
+  func scrypt(password: ArrayBufferHolder, salt: ArrayBufferHolder, N: Double, r: Double, p: Double, size: Double) throws -> ArrayBufferHolder
 }

@@ -51,7 +51,7 @@ namespace margelo::nitro::TurboScrypt {
 
   public:
     // Methods
-    std::string scrypt(const std::string& password, const std::string& salt, double N, double r, double p, double size) override;
+    std::shared_ptr<ArrayBuffer> scrypt(const std::shared_ptr<ArrayBuffer>& password, const std::shared_ptr<ArrayBuffer>& salt, double N, double r, double p, double size) override;
 
   private:
     friend HybridBase;

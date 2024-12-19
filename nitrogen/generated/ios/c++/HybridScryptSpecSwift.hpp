@@ -12,9 +12,13 @@
 // Forward declaration of `HybridScryptSpecCxx` to properly resolve imports.
 namespace TurboScryptiOS { class HybridScryptSpecCxx; }
 
+// Forward declaration of `ArrayBuffer` to properly resolve imports.
+namespace NitroModules { class ArrayBuffer; }
+// Forward declaration of `ArrayBufferHolder` to properly resolve imports.
+namespace NitroModules { class ArrayBufferHolder; }
 
-
-#include <string>
+#include <NitroModules/ArrayBuffer.hpp>
+#include <NitroModules/ArrayBufferHolder.hpp>
 
 #if __has_include(<NitroModules/HybridContext.hpp>)
 #include <NitroModules/HybridContext.hpp>
@@ -59,9 +63,9 @@ namespace margelo::nitro::TurboScrypt {
 
   public:
     // Methods
-    inline std::string scrypt(const std::string& password, const std::string& salt, double N, double r, double p, double size) override {
-      auto __result = _swiftPart.scrypt(password, salt, std::forward<decltype(N)>(N), std::forward<decltype(r)>(r), std::forward<decltype(p)>(p), std::forward<decltype(size)>(size));
-      return __result;
+    inline std::shared_ptr<ArrayBuffer> scrypt(const std::shared_ptr<ArrayBuffer>& password, const std::shared_ptr<ArrayBuffer>& salt, double N, double r, double p, double size) override {
+      auto __result = _swiftPart.scrypt(ArrayBufferHolder(password), ArrayBufferHolder(salt), std::forward<decltype(N)>(N), std::forward<decltype(r)>(r), std::forward<decltype(p)>(p), std::forward<decltype(size)>(size));
+      return __result.getArrayBuffer();
     }
 
   private:

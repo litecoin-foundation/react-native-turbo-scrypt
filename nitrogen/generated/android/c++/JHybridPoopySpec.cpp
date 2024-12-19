@@ -7,9 +7,12 @@
 
 #include "JHybridPoopySpec.hpp"
 
+// Forward declaration of `ArrayBuffer` to properly resolve imports.
+namespace NitroModules { class ArrayBuffer; }
 
-
-#include <string>
+#include <NitroModules/ArrayBuffer.hpp>
+#include <NitroModules/JArrayBuffer.hpp>
+#include <NitroModules/JUnit.hpp>
 
 namespace margelo::nitro::TurboScrypt {
 
@@ -32,10 +35,10 @@ namespace margelo::nitro::TurboScrypt {
   
 
   // Methods
-  std::string JHybridPoopySpec::scrypt(const std::string& password, const std::string& salt, double N, double r, double p, double size) {
-    static const auto method = _javaPart->getClass()->getMethod<jni::local_ref<jni::JString>(jni::alias_ref<jni::JString> /* password */, jni::alias_ref<jni::JString> /* salt */, double /* N */, double /* r */, double /* p */, double /* size */)>("scrypt");
-    auto __result = method(_javaPart, jni::make_jstring(password), jni::make_jstring(salt), N, r, p, size);
-    return __result->toStdString();
+  std::shared_ptr<ArrayBuffer> JHybridPoopySpec::scrypt(const std::shared_ptr<ArrayBuffer>& password, const std::shared_ptr<ArrayBuffer>& salt, double N, double r, double p, double size) {
+    static const auto method = _javaPart->getClass()->getMethod<jni::local_ref<JArrayBuffer::javaobject>(jni::alias_ref<JArrayBuffer::javaobject> /* password */, jni::alias_ref<JArrayBuffer::javaobject> /* salt */, double /* N */, double /* r */, double /* p */, double /* size */)>("scrypt");
+    auto __result = method(_javaPart, JArrayBuffer::wrap(password), JArrayBuffer::wrap(salt), N, r, p, size);
+    return __result->cthis()->getArrayBuffer();
   }
 
 } // namespace margelo::nitro::TurboScrypt

@@ -8,19 +8,37 @@ const SCRYPT_R = 8;
 const SCRYPT_P = 1;
 const SCRYPT_KEY_LENGTH = 32;
 
+function buf2hex(buffer: ArrayBuffer) {
+  return [...new Uint8Array(buffer)]
+    .map(x => x.toString(16).padStart(2, '0'))
+    .join('');
+}
+
 function App(): React.JSX.Element {
-  const onPress = () => {
+  const onPress = async () => {
+    const passwordString = 'aezeed';
+    const passwordBuffer = new TextEncoder().encode(passwordString).buffer;
+
+    const saltBuffer = new ArrayBuffer(4);
+    const saltView = new Uint8Array(saltBuffer);
+    saltView.set([0x04, 0x08, 0x0c, 0x10]);
+
+    console.log(passwordString);
+    console.log(saltBuffer.byteLength);
+    console.log(passwordBuffer.byteLength);
+
     updateTimeTaken(0);
+
     const t0 = performance.now();
-    const hex = Scrypt.scrypt(
-      String(Math.random() * 1000000000000),
-      'poopy',
+    const key = Scrypt.scrypt(
+      passwordBuffer,
+      saltBuffer,
       SCRYPT_N,
       SCRYPT_R,
       SCRYPT_P,
       SCRYPT_KEY_LENGTH,
     );
-    updateHex(hex);
+    updateHex(buf2hex(key));
     const t1 = performance.now();
     updateTimeTaken(t1 - t0);
   };

@@ -13,9 +13,10 @@
 #error NitroModules cannot be found! Are you sure you installed NitroModules properly?
 #endif
 
+// Forward declaration of `ArrayBuffer` to properly resolve imports.
+namespace NitroModules { class ArrayBuffer; }
 
-
-#include <string>
+#include <NitroModules/ArrayBuffer.hpp>
 
 namespace margelo::nitro::TurboScrypt {
 
@@ -48,7 +49,7 @@ namespace margelo::nitro::TurboScrypt {
 
     public:
       // Methods
-      virtual std::string scrypt(const std::string& password, const std::string& salt, double N, double r, double p, double size) = 0;
+      virtual std::shared_ptr<ArrayBuffer> scrypt(const std::shared_ptr<ArrayBuffer>& password, const std::shared_ptr<ArrayBuffer>& salt, double N, double r, double p, double size) = 0;
 
     protected:
       // Hybrid Setup
