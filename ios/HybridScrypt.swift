@@ -4,7 +4,7 @@ import NitroModules
 
 class HybridScrypt: HybridScryptSpec {
     var hybridContext = margelo.nitro.HybridContext()
-    var memorySize: Int {
+    public override var memorySize: Int {
         return getSizeOf(self)
     }
 

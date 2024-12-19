@@ -8,29 +8,42 @@
 import Foundation
 import NitroModules
 
-/**
- * A Swift protocol representing the Scrypt HybridObject.
- * Implement this protocol to create Swift-based instances of Scrypt.
- *
- * When implementing this protocol, make sure to initialize `hybridContext` - example:
- * ```
- * public class HybridScrypt : HybridScryptSpec {
- *   // Initialize HybridContext
- *   var hybridContext = margelo.nitro.HybridContext()
- *
- *   // Return size of the instance to inform JS GC about memory pressure
- *   var memorySize: Int {
- *     return getSizeOf(self)
- *   }
- *
- *   // ...
- * }
- * ```
- */
-public protocol HybridScryptSpec: AnyObject, HybridObjectSpec {
+/// See ``HybridScryptSpec``
+public protocol HybridScryptSpec_protocol: AnyObject {
   // Properties
   
 
   // Methods
   func scrypt(password: ArrayBufferHolder, salt: ArrayBufferHolder, N: Double, r: Double, p: Double, size: Double) throws -> ArrayBufferHolder
 }
+
+/// See ``HybridScryptSpec``
+public class HybridScryptSpec_base: HybridObjectSpec {
+  private weak var cxxWrapper: HybridScryptSpec_cxx? = nil
+  public func getCxxWrapper() -> HybridScryptSpec_cxx {
+  #if DEBUG
+    guard self is HybridScryptSpec else {
+      fatalError("`self` is not a `HybridScryptSpec`! Did you accidentally inherit from `HybridScryptSpec_base` instead of `HybridScryptSpec`?")
+    }
+  #endif
+    if let cxxWrapper = self.cxxWrapper {
+      return cxxWrapper
+    } else {
+      let cxxWrapper = HybridScryptSpec_cxx(self as! HybridScryptSpec)
+      self.cxxWrapper = cxxWrapper
+      return cxxWrapper
+    }
+  }
+  public var memorySize: Int { return 0 }
+}
+
+/**
+ * A Swift base-protocol representing the Scrypt HybridObject.
+ * Implement this protocol to create Swift-based instances of Scrypt.
+ * ```swift
+ * class HybridScrypt : HybridScryptSpec {
+ *   // ...
+ * }
+ * ```
+ */
+public typealias HybridScryptSpec = HybridScryptSpec_protocol & HybridScryptSpec_base

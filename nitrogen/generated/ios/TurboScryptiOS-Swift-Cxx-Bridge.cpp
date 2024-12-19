@@ -10,14 +10,13 @@
 // Include C++ implementation defined types
 #include "HybridScryptSpecSwift.hpp"
 #include "TurboScryptiOS-Swift-Cxx-Umbrella.hpp"
-#include <NitroModules/HybridContext.hpp>
 
 namespace margelo::nitro::TurboScrypt::bridge::swift {
 
   // pragma MARK: std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec>
   std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec> create_std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_(void* _Nonnull swiftUnsafePointer) {
-    TurboScryptiOS::HybridScryptSpecCxx swiftPart = TurboScryptiOS::HybridScryptSpecCxxUnsafe::fromUnsafe(swiftUnsafePointer);
-    return HybridContext::getOrCreate<margelo::nitro::TurboScrypt::HybridScryptSpecSwift>(swiftPart);
+    TurboScryptiOS::HybridScryptSpec_cxx swiftPart = TurboScryptiOS::HybridScryptSpec_cxx::fromUnsafe(swiftUnsafePointer);
+    return std::make_shared<margelo::nitro::TurboScrypt::HybridScryptSpecSwift>(swiftPart);
   }
   void* _Nonnull get_std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_(std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_ cppType) {
     std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpecSwift> swiftWrapper = std::dynamic_pointer_cast<margelo::nitro::TurboScrypt::HybridScryptSpecSwift>(cppType);
@@ -26,8 +25,8 @@ namespace margelo::nitro::TurboScrypt::bridge::swift {
       throw std::runtime_error("Class \"HybridScryptSpec\" is not implemented in Swift!");
     }
   #endif
-    TurboScryptiOS::HybridScryptSpecCxx swiftPart = swiftWrapper->getSwiftPart();
-    return TurboScryptiOS::HybridScryptSpecCxxUnsafe::toUnsafe(swiftPart);
+    TurboScryptiOS::HybridScryptSpec_cxx swiftPart = swiftWrapper->getSwiftPart();
+    return swiftPart.toUnsafe();
   }
 
 } // namespace margelo::nitro::TurboScrypt::bridge::swift

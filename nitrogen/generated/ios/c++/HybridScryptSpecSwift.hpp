@@ -9,8 +9,8 @@
 
 #include "HybridScryptSpec.hpp"
 
-// Forward declaration of `HybridScryptSpecCxx` to properly resolve imports.
-namespace TurboScryptiOS { class HybridScryptSpecCxx; }
+// Forward declaration of `HybridScryptSpec_cxx` to properly resolve imports.
+namespace TurboScryptiOS { class HybridScryptSpec_cxx; }
 
 // Forward declaration of `ArrayBuffer` to properly resolve imports.
 namespace NitroModules { class ArrayBuffer; }
@@ -20,36 +20,30 @@ namespace NitroModules { class ArrayBufferHolder; }
 #include <NitroModules/ArrayBuffer.hpp>
 #include <NitroModules/ArrayBufferHolder.hpp>
 
-#if __has_include(<NitroModules/HybridContext.hpp>)
-#include <NitroModules/HybridContext.hpp>
-#else
-#error NitroModules cannot be found! Are you sure you installed NitroModules properly?
-#endif
-
 #include "TurboScryptiOS-Swift-Cxx-Umbrella.hpp"
 
 namespace margelo::nitro::TurboScrypt {
 
   /**
-   * The C++ part of HybridScryptSpecCxx.swift.
+   * The C++ part of HybridScryptSpec_cxx.swift.
    *
-   * HybridScryptSpecSwift (C++) accesses HybridScryptSpecCxx (Swift), and might
+   * HybridScryptSpecSwift (C++) accesses HybridScryptSpec_cxx (Swift), and might
    * contain some additional bridging code for C++ <> Swift interop.
    *
    * Since this obviously introduces an overhead, I hope at some point in
-   * the future, HybridScryptSpecCxx can directly inherit from the C++ class HybridScryptSpec
+   * the future, HybridScryptSpec_cxx can directly inherit from the C++ class HybridScryptSpec
    * to simplify the whole structure and memory management.
    */
   class HybridScryptSpecSwift: public virtual HybridScryptSpec {
   public:
     // Constructor from a Swift instance
-    explicit HybridScryptSpecSwift(const TurboScryptiOS::HybridScryptSpecCxx& swiftPart):
+    explicit HybridScryptSpecSwift(const TurboScryptiOS::HybridScryptSpec_cxx& swiftPart):
       HybridObject(HybridScryptSpec::TAG),
       _swiftPart(swiftPart) { }
 
   public:
     // Get the Swift part
-    inline TurboScryptiOS::HybridScryptSpecCxx getSwiftPart() noexcept { return _swiftPart; }
+    inline TurboScryptiOS::HybridScryptSpec_cxx getSwiftPart() noexcept { return _swiftPart; }
 
   public:
     // Get memory pressure
@@ -65,11 +59,15 @@ namespace margelo::nitro::TurboScrypt {
     // Methods
     inline std::shared_ptr<ArrayBuffer> scrypt(const std::shared_ptr<ArrayBuffer>& password, const std::shared_ptr<ArrayBuffer>& salt, double N, double r, double p, double size) override {
       auto __result = _swiftPart.scrypt(ArrayBufferHolder(password), ArrayBufferHolder(salt), std::forward<decltype(N)>(N), std::forward<decltype(r)>(r), std::forward<decltype(p)>(p), std::forward<decltype(size)>(size));
-      return __result.getArrayBuffer();
+      if (__result.hasError()) [[unlikely]] {
+        std::rethrow_exception(__result.error());
+      }
+      auto __value = std::move(__result.value());
+      return __value;
     }
 
   private:
-    TurboScryptiOS::HybridScryptSpecCxx _swiftPart;
+    TurboScryptiOS::HybridScryptSpec_cxx _swiftPart;
   };
 
 } // namespace margelo::nitro::TurboScrypt

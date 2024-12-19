@@ -8,15 +8,20 @@
 #pragma once
 
 // Forward declarations of C++ defined types
+// Forward declaration of `ArrayBuffer` to properly resolve imports.
+namespace NitroModules { class ArrayBuffer; }
 // Forward declaration of `HybridScryptSpec` to properly resolve imports.
 namespace margelo::nitro::TurboScrypt { class HybridScryptSpec; }
 
 // Forward declarations of Swift defined types
-// Forward declaration of `HybridScryptSpecCxx` to properly resolve imports.
-namespace TurboScryptiOS { class HybridScryptSpecCxx; }
+// Forward declaration of `HybridScryptSpec_cxx` to properly resolve imports.
+namespace TurboScryptiOS { class HybridScryptSpec_cxx; }
 
 // Include C++ defined types
 #include "HybridScryptSpec.hpp"
+#include <NitroModules/ArrayBuffer.hpp>
+#include <NitroModules/Result.hpp>
+#include <exception>
 #include <memory>
 
 /**
@@ -32,5 +37,18 @@ namespace margelo::nitro::TurboScrypt::bridge::swift {
   using std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_ = std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec>;
   std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec> create_std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_(void* _Nonnull swiftUnsafePointer);
   void* _Nonnull get_std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_(std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_ cppType);
+  
+  // pragma MARK: std::weak_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec>
+  using std__weak_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_ = std::weak_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec>;
+  inline std__weak_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_ weakify_std__shared_ptr_margelo__nitro__TurboScrypt__HybridScryptSpec_(const std::shared_ptr<margelo::nitro::TurboScrypt::HybridScryptSpec>& strong) { return strong; }
+  
+  // pragma MARK: Result<std::shared_ptr<ArrayBuffer>>
+  using Result_std__shared_ptr_ArrayBuffer__ = Result<std::shared_ptr<ArrayBuffer>>;
+  inline Result_std__shared_ptr_ArrayBuffer__ create_Result_std__shared_ptr_ArrayBuffer__(const std::shared_ptr<ArrayBuffer>& value) {
+    return Result<std::shared_ptr<ArrayBuffer>>::withValue(value);
+  }
+  inline Result_std__shared_ptr_ArrayBuffer__ create_Result_std__shared_ptr_ArrayBuffer__(const std::exception_ptr& error) {
+    return Result<std::shared_ptr<ArrayBuffer>>::withError(error);
+  }
 
 } // namespace margelo::nitro::TurboScrypt::bridge::swift
