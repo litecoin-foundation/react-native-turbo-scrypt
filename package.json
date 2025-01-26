@@ -1,6 +1,6 @@
 {
   "name": "react-native-turbo-scrypt",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "⚡ fast Scrypt implementation for React Native via Nitromodules",
   "main": "lib/index",
   "module": "lib/index",
@@ -31,8 +31,7 @@
     "clean": "rm -rf android/build node_modules/**/android/build lib",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
     "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
-    "typescript": "tsc",
-    "specs": "tsc && nitro-codegen --logLevel=\"debug\""
+    "specs": "nitro-codegen --logLevel=\"debug\""
   },
   "keywords": [
     "react-native",
@@ -52,23 +51,23 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@react-native/eslint-config": "^0.75.2",
+    "@react-native/eslint-config": "0.77.0",
     "@types/jest": "^29.5.12",
-    "@types/react": "^18.3.4",
+    "@types/react": "^19.0.6",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "nitro-codegen": "*",
     "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-native": "^0.75.2",
-    "react-native-nitro-modules": "0.19.0",
+    "react": "18.3.1",
+    "react-native": "0.77.0",
+    "react-native-nitro-modules": "*",
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-nitro-modules": "0.19.0"
+    "react-native-nitro-modules": "*"
   },
   "eslintConfig": {
     "root": true,
