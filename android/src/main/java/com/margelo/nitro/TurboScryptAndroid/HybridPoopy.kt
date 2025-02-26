@@ -1,10 +1,11 @@
 package com.margelo.nitro.TurboScryptAndroid
 
+import com.facebook.react.uimanager.ThemedReactContext
 import com.margelo.nitro.core.ArrayBuffer
 import java.nio.ByteBuffer
 import org.bouncycastle.crypto.generators.SCrypt
 
-class HybridPoopy : HybridPoopySpec() {
+class HybridPoopy(val context: ThemedReactContext) : HybridPoopySpec() {
     companion object {
         const val TAG = "HybridPoopy"
     }

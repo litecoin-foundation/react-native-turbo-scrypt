@@ -1,6 +1,6 @@
 {
   "name": "react-native-turbo-scrypt",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "⚡ fast Scrypt implementation for React Native via Nitromodules",
   "main": "lib/index",
   "module": "lib/index",
